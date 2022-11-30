@@ -14,8 +14,8 @@ pub struct Game {
     height: u16,
     snake: Snake,
     food: Option<Point>,
-    /* snake: Snake,
     speed: u16,
+    /* snake: Snake,
     score: u16, */
 }
 
@@ -112,6 +112,7 @@ impl Game {
                     _ => Direction::Left,
                 },
             ),
+            speed: 0,
             food: None,
             /*  snake: Snake::new(
                 Point::new(width / 2, height / 2),
@@ -195,19 +196,19 @@ impl Game {
     }
 
     fn draw_snake(&mut self) {
-        /* let fg = SetForegroundColor(match self.speed % 3 {
+        let fg = SetForegroundColor(match self.speed % 3 {
             0 => Color::Green,
             1 => Color::Cyan,
-            _ => Color::Yellow
-        }); */
-        execute!(
+            _ => Color::Yellow,
+        });
+        /*  execute!(
             stdout(),
             SetForegroundColor(Color::White),
             MoveTo(self.width / 2, self.height / 2),
         )
         .unwrap();
 
-        let body_points = self.snake.body.clone();
+        let body_points = self.snake.body.clone(); */
 
         /* self.stdout
         .execute(MoveTo(7, 6)).unwrap(); */
@@ -248,7 +249,7 @@ impl Game {
     fn render(&mut self) {
         self.draw_background();
         self.draw_borders();
+        self.draw_snake();
         /*  self.draw_food(); */
-        /* self.draw_snake(); */
     }
 }
